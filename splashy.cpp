@@ -17,12 +17,12 @@ Splashy::Splashy(Splashy *father, class Dot nexDot)
     startDot    = father->startDot;
     endDot      = father->endDot;
     mapSize     = father->mapSize;
-    walkWay     = father->walkWay;
-    walkWay.append(curDot);
+    walkWay     = father->walkWay;    
 
     this->dotMap = (bool *)malloc(mapSize*mapSize*sizeof(bool));
     memcpy(dotMap, father->dotMap, mapSize*mapSize*sizeof(bool));
     setMap(nexDot);
+    walkWay.append(curDot);
 }
 /*
  *  .   .   .   .
@@ -97,6 +97,7 @@ bool Splashy::probe()
     //2.是否成功
     if(validDot.isEmpty()){
         qDebug() << "get Empty";
+        this->show();
         if(curDot == endDot && mapIsAllFalse()){
             qDebug()<<"====================================";
             return true;
@@ -114,7 +115,6 @@ bool Splashy::probe()
             return true;
         }
     }
-    show();
     return false;
 }
 
