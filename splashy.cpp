@@ -73,7 +73,7 @@ void Splashy::getLineDot(class Dot a, class Dot b)
         }
     }
     if(a.col == b.col && a.row < b.row){//同列 向上遍历
-        for(int row = b.row - 1; row >= a.col; row--){
+        for(int row = b.row - 1; row >= a.row; row--){
             if(mapType(dotMap)[row][a.col]){
                 validDot.append(Dot(row, a.col));
                 return;
@@ -96,14 +96,11 @@ bool Splashy::probe()
     //1.是否可继续
     //2.是否成功
     if(validDot.isEmpty()){
-        qDebug() << "get Empty";
-        this->show();
+        qDebug() << "get Empty";        
         if(curDot == endDot && mapIsAllFalse()){
-            qDebug()<<"====================================";
+            this->show();
             return true;
-        }else
-        {
-            qDebug()<<"-----------------------------------";
+        }else{
             return false;
         }
     }
@@ -111,7 +108,6 @@ bool Splashy::probe()
     foreach (class Dot oneDot, validDot) {
         Splashy son(this, oneDot);
         if(son.probe()){
-            son.show();
             return true;
         }
     }

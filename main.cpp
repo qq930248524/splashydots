@@ -10,20 +10,13 @@ int main(int argc, char *argv[])
 
     const int mapSize = 4;
     bool dotmap[mapSize][mapSize] = {
-        true,  true,  true,  true,
-        true,  false,  false,  false,
-        true,  false,  false,  true,
-        true,  true,  true,  true
+        1,  1,  1,  1,
+        1,  0,  0,  0,
+        1,  1,  1,  1,
+        1,  1,  1,  1
     };
-//    const int mapSize = 3;
-//    bool dotmap[mapSize][mapSize] = {
-//        true,  true,  true,
-//        true,  false,  true,
-//        true,  true,  true
-//    };
-
-    Dot startDot = {0,3};
-    Dot endDot = {2,3};
+    Dot startDot = {0,2};
+    Dot endDot = {0,3};
 
     for(int i = 0; i < mapSize; i++){
         qDebug() << QString(" %1 %2 %3 %4")
